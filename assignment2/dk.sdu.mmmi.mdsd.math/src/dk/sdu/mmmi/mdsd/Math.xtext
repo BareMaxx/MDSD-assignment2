@@ -1,0 +1,102 @@
+grammar dk.sdu.mmmi.mdsd.Math with org.eclipse.xtext.common.Terminals
+
+generate math "http://www.sdu.dk/mmmi/mdsd/Math"
+
+
+MathExp: exp=Exp;
+Exp: Var;
+Var returns Exp:
+	PlusMinus (
+		({Var.left=current} 'var ' name=ID ' = ' right=Var) | 
+		({Let.left=current} 'let ' name=ID '='  right=PlusMinus)
+		)
+;
+PlusMinus returns Exp: 
+	Term (
+		({Plus.left=current} '+' right=Term |
+		{Minus.left=current} '-' right=Term 
+		)
+	)*
+;
+Term returns Exp: 
+	Primary (
+		({Mult.left=current} '*' right=Primary |
+		{Div.left=current} '/' right=Primary 
+		)
+	)*
+;
+
+Primary returns Exp: {MyNumber} value=INT | '(' Exp ')';
+
+
+/*ExpressionsModel:
+	elements +=AbstractElement*
+;
+
+AbstractElement:
+	Variable | EvalExpression;
+	
+Variable:
+	'var' name=ID '=' expression=Expression;
+
+EvalExpression:
+	'eval' expression=Expression;
+
+Expression: 
+	PlusOrMinus
+;
+
+PlusOrMinus returns Expression:
+	MulOrDiv (({Plus.left=current} '+' | {Minus.left=current} '-') right=MulOrDiv)*
+;
+
+MulOrDiv returns Expression:
+	Primary({MulOrDiv.left = current} op=("*"|"/") right=Primary)*
+;
+
+Primary returns Expression:
+	'(' Expression ')' |
+	{Not} "!" expression=Primary | Atomic
+;
+
+Atomic returns Expression:
+	{IntConstant} value=INT |
+	{StringConstant} value=STRING |
+	{BoolConstant} value=('true'|'false') |
+	{VariableRef} variable=[Variable]
+;
+
+
+/*MathExp:
+	'var' name=ID '=' exp=Exp
+;
+
+
+ExpTail:
+	ExpOp right=Primary
+;
+
+ExpOp:
+	{Plus} '+' | 
+	{Minus} '-'	 | 
+	{Mult} '*' | 
+	{Div} '/'	
+;
+
+Primary:
+	Number | 
+	Parenthesis | 
+	VariableUse
+;
+
+Parenthesis:
+	'(' exp=Exp ')'
+;
+
+Number:
+	value=INT
+;
+
+VariableUse:
+	ref = [MathExp]
+;*/
