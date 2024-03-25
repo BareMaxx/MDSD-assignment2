@@ -96,6 +96,16 @@ public class MathAdapterFactory extends AdapterFactoryImpl
         return createLetAdapter();
       }
       @Override
+      public Adapter caseIn(In object)
+      {
+        return createInAdapter();
+      }
+      @Override
+      public Adapter caseEnd(End object)
+      {
+        return createEndAdapter();
+      }
+      @Override
       public Adapter casePlus(Plus object)
       {
         return createPlusAdapter();
@@ -119,6 +129,11 @@ public class MathAdapterFactory extends AdapterFactoryImpl
       public Adapter caseMyNumber(MyNumber object)
       {
         return createMyNumberAdapter();
+      }
+      @Override
+      public Adapter caseMyString(MyString object)
+      {
+        return createMyStringAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -203,6 +218,36 @@ public class MathAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.In <em>In</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see dk.sdu.mmmi.mdsd.math.In
+   * @generated
+   */
+  public Adapter createInAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.End <em>End</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see dk.sdu.mmmi.mdsd.math.End
+   * @generated
+   */
+  public Adapter createEndAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.Plus <em>Plus</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -273,6 +318,21 @@ public class MathAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMyNumberAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.MyString <em>My String</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see dk.sdu.mmmi.mdsd.math.MyString
+   * @generated
+   */
+  public Adapter createMyStringAdapter()
   {
     return null;
   }

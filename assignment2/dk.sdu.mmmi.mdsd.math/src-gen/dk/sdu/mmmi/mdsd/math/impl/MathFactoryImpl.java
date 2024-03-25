@@ -69,11 +69,14 @@ public class MathFactoryImpl extends EFactoryImpl implements MathFactory
       case MathPackage.EXP: return createExp();
       case MathPackage.VAR: return createVar();
       case MathPackage.LET: return createLet();
+      case MathPackage.IN: return createIn();
+      case MathPackage.END: return createEnd();
       case MathPackage.PLUS: return createPlus();
       case MathPackage.MINUS: return createMinus();
       case MathPackage.MULT: return createMult();
       case MathPackage.DIV: return createDiv();
       case MathPackage.MY_NUMBER: return createMyNumber();
+      case MathPackage.MY_STRING: return createMyString();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -125,6 +128,30 @@ public class MathFactoryImpl extends EFactoryImpl implements MathFactory
   {
     LetImpl let = new LetImpl();
     return let;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public In createIn()
+  {
+    InImpl in = new InImpl();
+    return in;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public End createEnd()
+  {
+    EndImpl end = new EndImpl();
+    return end;
   }
 
   /**
@@ -185,6 +212,18 @@ public class MathFactoryImpl extends EFactoryImpl implements MathFactory
   {
     MyNumberImpl myNumber = new MyNumberImpl();
     return myNumber;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MyString createMyString()
+  {
+    MyStringImpl myString = new MyStringImpl();
+    return myString;
   }
 
   /**

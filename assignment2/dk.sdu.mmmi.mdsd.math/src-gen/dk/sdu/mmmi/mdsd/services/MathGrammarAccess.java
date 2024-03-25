@@ -50,56 +50,127 @@ public class MathGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	public class VarElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.sdu.mmmi.mdsd.Math.Var");
 		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cLetParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Action cVarLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Keyword cVarKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cNameAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_1_2_0 = (RuleCall)cNameAssignment_1_2.eContents().get(0);
+		private final Keyword cSpaceEqualsSignSpaceKeyword_1_3 = (Keyword)cGroup_1.eContents().get(3);
+		private final Assignment cRightAssignment_1_4 = (Assignment)cGroup_1.eContents().get(4);
+		private final RuleCall cRightLetParserRuleCall_1_4_0 = (RuleCall)cRightAssignment_1_4.eContents().get(0);
+		
+		//Var returns Exp:
+		//    Let (
+		//        ({Var.left=current} 'var ' name=ID ' = ' right=Let)
+		//    )*
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//Let (
+		//    ({Var.left=current} 'var ' name=ID ' = ' right=Let)
+		//)*
+		public Group getGroup() { return cGroup; }
+		
+		//Let
+		public RuleCall getLetParserRuleCall_0() { return cLetParserRuleCall_0; }
+		
+		//(
+		//       ({Var.left=current} 'var ' name=ID ' = ' right=Let)
+		//   )*
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//{Var.left=current}
+		public Action getVarLeftAction_1_0() { return cVarLeftAction_1_0; }
+		
+		//'var '
+		public Keyword getVarKeyword_1_1() { return cVarKeyword_1_1; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1_2() { return cNameAssignment_1_2; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_2_0() { return cNameIDTerminalRuleCall_1_2_0; }
+		
+		//' = '
+		public Keyword getSpaceEqualsSignSpaceKeyword_1_3() { return cSpaceEqualsSignSpaceKeyword_1_3; }
+		
+		//right=Let
+		public Assignment getRightAssignment_1_4() { return cRightAssignment_1_4; }
+		
+		//Let
+		public RuleCall getRightLetParserRuleCall_1_4_0() { return cRightLetParserRuleCall_1_4_0; }
+	}
+	public class LetElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.sdu.mmmi.mdsd.Math.Let");
+		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cPlusMinusParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
 		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
-		private final Action cVarLeftAction_1_0_0 = (Action)cGroup_1_0.eContents().get(0);
-		private final Keyword cVarKeyword_1_0_1 = (Keyword)cGroup_1_0.eContents().get(1);
+		private final Action cLetLeftAction_1_0_0 = (Action)cGroup_1_0.eContents().get(0);
+		private final Alternatives cAlternatives_1_0_1 = (Alternatives)cGroup_1_0.eContents().get(1);
+		private final Keyword cLetKeyword_1_0_1_0 = (Keyword)cAlternatives_1_0_1.eContents().get(0);
+		private final Keyword cLetKeyword_1_0_1_1 = (Keyword)cAlternatives_1_0_1.eContents().get(1);
 		private final Assignment cNameAssignment_1_0_2 = (Assignment)cGroup_1_0.eContents().get(2);
 		private final RuleCall cNameIDTerminalRuleCall_1_0_2_0 = (RuleCall)cNameAssignment_1_0_2.eContents().get(0);
-		private final Keyword cSpaceEqualsSignSpaceKeyword_1_0_3 = (Keyword)cGroup_1_0.eContents().get(3);
+		private final Alternatives cAlternatives_1_0_3 = (Alternatives)cGroup_1_0.eContents().get(3);
+		private final Keyword cSpaceEqualsSignSpaceKeyword_1_0_3_0 = (Keyword)cAlternatives_1_0_3.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1_0_3_1 = (Keyword)cAlternatives_1_0_3.eContents().get(1);
 		private final Assignment cRightAssignment_1_0_4 = (Assignment)cGroup_1_0.eContents().get(4);
-		private final RuleCall cRightVarParserRuleCall_1_0_4_0 = (RuleCall)cRightAssignment_1_0_4.eContents().get(0);
+		private final RuleCall cRightPlusMinusParserRuleCall_1_0_4_0 = (RuleCall)cRightAssignment_1_0_4.eContents().get(0);
 		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
-		private final Action cLetLeftAction_1_1_0 = (Action)cGroup_1_1.eContents().get(0);
-		private final Keyword cLetKeyword_1_1_1 = (Keyword)cGroup_1_1.eContents().get(1);
-		private final Assignment cNameAssignment_1_1_2 = (Assignment)cGroup_1_1.eContents().get(2);
-		private final RuleCall cNameIDTerminalRuleCall_1_1_2_0 = (RuleCall)cNameAssignment_1_1_2.eContents().get(0);
-		private final Keyword cEqualsSignKeyword_1_1_3 = (Keyword)cGroup_1_1.eContents().get(3);
-		private final Assignment cRightAssignment_1_1_4 = (Assignment)cGroup_1_1.eContents().get(4);
-		private final RuleCall cRightPlusMinusParserRuleCall_1_1_4_0 = (RuleCall)cRightAssignment_1_1_4.eContents().get(0);
+		private final Action cInLeftAction_1_1_0 = (Action)cGroup_1_1.eContents().get(0);
+		private final Keyword cInKeyword_1_1_1 = (Keyword)cGroup_1_1.eContents().get(1);
+		private final Assignment cRightAssignment_1_1_2 = (Assignment)cGroup_1_1.eContents().get(2);
+		private final RuleCall cRightPlusMinusParserRuleCall_1_1_2_0 = (RuleCall)cRightAssignment_1_1_2.eContents().get(0);
+		private final Group cGroup_1_2 = (Group)cAlternatives_1.eContents().get(2);
+		private final Action cEndLeftAction_1_2_0 = (Action)cGroup_1_2.eContents().get(0);
+		private final Alternatives cAlternatives_1_2_1 = (Alternatives)cGroup_1_2.eContents().get(1);
+		private final Keyword cEndKeyword_1_2_1_0 = (Keyword)cAlternatives_1_2_1.eContents().get(0);
+		private final Keyword cEndKeyword_1_2_1_1 = (Keyword)cAlternatives_1_2_1.eContents().get(1);
+		private final Assignment cRightAssignment_1_2_2 = (Assignment)cGroup_1_2.eContents().get(2);
+		private final RuleCall cRightPlusMinusParserRuleCall_1_2_2_0 = (RuleCall)cRightAssignment_1_2_2.eContents().get(0);
 		
-		//Var returns Exp:
+		//Let returns Exp:
 		//    PlusMinus (
-		//        ({Var.left=current} 'var ' name=ID ' = ' right=Var) |
-		//        ({Let.left=current} 'let ' name=ID '='  right=PlusMinus)
-		//        )
+		//        ({Let.left=current} ('let ' | ' let ') name=ID (' = ' | '=')  right=PlusMinus) |
+		//        ({In.left=current} ' in ' right=PlusMinus) |
+		//        ({End.left=current} ('end' | ' end ') right=PlusMinus)
+		//    )*
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//PlusMinus (
-		//    ({Var.left=current} 'var ' name=ID ' = ' right=Var) |
-		//    ({Let.left=current} 'let ' name=ID '='  right=PlusMinus)
-		//    )
+		//    ({Let.left=current} ('let ' | ' let ') name=ID (' = ' | '=')  right=PlusMinus) |
+		//    ({In.left=current} ' in ' right=PlusMinus) |
+		//    ({End.left=current} ('end' | ' end ') right=PlusMinus)
+		//)*
 		public Group getGroup() { return cGroup; }
 		
 		//PlusMinus
 		public RuleCall getPlusMinusParserRuleCall_0() { return cPlusMinusParserRuleCall_0; }
 		
 		//(
-		//       ({Var.left=current} 'var ' name=ID ' = ' right=Var) |
-		//       ({Let.left=current} 'let ' name=ID '='  right=PlusMinus)
-		//       )
+		//       ({Let.left=current} ('let ' | ' let ') name=ID (' = ' | '=')  right=PlusMinus) |
+		//       ({In.left=current} ' in ' right=PlusMinus) |
+		//       ({End.left=current} ('end' | ' end ') right=PlusMinus)
+		//   )*
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
-		//({Var.left=current} 'var ' name=ID ' = ' right=Var)
+		//({Let.left=current} ('let ' | ' let ') name=ID (' = ' | '=')  right=PlusMinus)
 		public Group getGroup_1_0() { return cGroup_1_0; }
 		
-		//{Var.left=current}
-		public Action getVarLeftAction_1_0_0() { return cVarLeftAction_1_0_0; }
+		//{Let.left=current}
+		public Action getLetLeftAction_1_0_0() { return cLetLeftAction_1_0_0; }
 		
-		//'var '
-		public Keyword getVarKeyword_1_0_1() { return cVarKeyword_1_0_1; }
+		//('let ' | ' let ')
+		public Alternatives getAlternatives_1_0_1() { return cAlternatives_1_0_1; }
+		
+		//'let '
+		public Keyword getLetKeyword_1_0_1_0() { return cLetKeyword_1_0_1_0; }
+		
+		//' let '
+		public Keyword getLetKeyword_1_0_1_1() { return cLetKeyword_1_0_1_1; }
 		
 		//name=ID
 		public Assignment getNameAssignment_1_0_2() { return cNameAssignment_1_0_2; }
@@ -107,38 +178,56 @@ public class MathGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0_2_0() { return cNameIDTerminalRuleCall_1_0_2_0; }
 		
+		//(' = ' | '=')
+		public Alternatives getAlternatives_1_0_3() { return cAlternatives_1_0_3; }
+		
 		//' = '
-		public Keyword getSpaceEqualsSignSpaceKeyword_1_0_3() { return cSpaceEqualsSignSpaceKeyword_1_0_3; }
-		
-		//right=Var
-		public Assignment getRightAssignment_1_0_4() { return cRightAssignment_1_0_4; }
-		
-		//Var
-		public RuleCall getRightVarParserRuleCall_1_0_4_0() { return cRightVarParserRuleCall_1_0_4_0; }
-		
-		//({Let.left=current} 'let ' name=ID '='  right=PlusMinus)
-		public Group getGroup_1_1() { return cGroup_1_1; }
-		
-		//{Let.left=current}
-		public Action getLetLeftAction_1_1_0() { return cLetLeftAction_1_1_0; }
-		
-		//'let '
-		public Keyword getLetKeyword_1_1_1() { return cLetKeyword_1_1_1; }
-		
-		//name=ID
-		public Assignment getNameAssignment_1_1_2() { return cNameAssignment_1_1_2; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_1_2_0() { return cNameIDTerminalRuleCall_1_1_2_0; }
+		public Keyword getSpaceEqualsSignSpaceKeyword_1_0_3_0() { return cSpaceEqualsSignSpaceKeyword_1_0_3_0; }
 		
 		//'='
-		public Keyword getEqualsSignKeyword_1_1_3() { return cEqualsSignKeyword_1_1_3; }
+		public Keyword getEqualsSignKeyword_1_0_3_1() { return cEqualsSignKeyword_1_0_3_1; }
 		
 		//right=PlusMinus
-		public Assignment getRightAssignment_1_1_4() { return cRightAssignment_1_1_4; }
+		public Assignment getRightAssignment_1_0_4() { return cRightAssignment_1_0_4; }
 		
 		//PlusMinus
-		public RuleCall getRightPlusMinusParserRuleCall_1_1_4_0() { return cRightPlusMinusParserRuleCall_1_1_4_0; }
+		public RuleCall getRightPlusMinusParserRuleCall_1_0_4_0() { return cRightPlusMinusParserRuleCall_1_0_4_0; }
+		
+		//({In.left=current} ' in ' right=PlusMinus)
+		public Group getGroup_1_1() { return cGroup_1_1; }
+		
+		//{In.left=current}
+		public Action getInLeftAction_1_1_0() { return cInLeftAction_1_1_0; }
+		
+		//' in '
+		public Keyword getInKeyword_1_1_1() { return cInKeyword_1_1_1; }
+		
+		//right=PlusMinus
+		public Assignment getRightAssignment_1_1_2() { return cRightAssignment_1_1_2; }
+		
+		//PlusMinus
+		public RuleCall getRightPlusMinusParserRuleCall_1_1_2_0() { return cRightPlusMinusParserRuleCall_1_1_2_0; }
+		
+		//({End.left=current} ('end' | ' end ') right=PlusMinus)
+		public Group getGroup_1_2() { return cGroup_1_2; }
+		
+		//{End.left=current}
+		public Action getEndLeftAction_1_2_0() { return cEndLeftAction_1_2_0; }
+		
+		//('end' | ' end ')
+		public Alternatives getAlternatives_1_2_1() { return cAlternatives_1_2_1; }
+		
+		//'end'
+		public Keyword getEndKeyword_1_2_1_0() { return cEndKeyword_1_2_1_0; }
+		
+		//' end '
+		public Keyword getEndKeyword_1_2_1_1() { return cEndKeyword_1_2_1_1; }
+		
+		//right=PlusMinus
+		public Assignment getRightAssignment_1_2_2() { return cRightAssignment_1_2_2; }
+		
+		//PlusMinus
+		public RuleCall getRightPlusMinusParserRuleCall_1_2_2_0() { return cRightPlusMinusParserRuleCall_1_2_2_0; }
 	}
 	public class PlusMinusElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.sdu.mmmi.mdsd.Math.PlusMinus");
@@ -292,14 +381,24 @@ public class MathGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final Assignment cValueAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
 		private final RuleCall cValueINTTerminalRuleCall_0_1_0 = (RuleCall)cValueAssignment_0_1.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cLeftParenthesisKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final RuleCall cExpParserRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
-		private final Keyword cRightParenthesisKeyword_1_2 = (Keyword)cGroup_1.eContents().get(2);
+		private final Action cMyStringAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cValueIDTerminalRuleCall_1_1_0 = (RuleCall)cValueAssignment_1_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Keyword cLeftParenthesisKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final RuleCall cExpParserRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_2_2 = (Keyword)cGroup_2.eContents().get(2);
 		
-		//Primary returns Exp: {MyNumber} value=INT | '(' Exp ')';
+		//Primary returns Exp:
+		//    {MyNumber} value=INT |
+		//    {MyString} value=ID |
+		//    '(' Exp ')'
+		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{MyNumber} value=INT | '(' Exp ')'
+		//{MyNumber} value=INT |
+		//{MyString} value=ID |
+		//'(' Exp ')'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//{MyNumber} value=INT
@@ -314,23 +413,36 @@ public class MathGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//INT
 		public RuleCall getValueINTTerminalRuleCall_0_1_0() { return cValueINTTerminalRuleCall_0_1_0; }
 		
-		//'(' Exp ')'
+		//{MyString} value=ID
 		public Group getGroup_1() { return cGroup_1; }
 		
+		//{MyString}
+		public Action getMyStringAction_1_0() { return cMyStringAction_1_0; }
+		
+		//value=ID
+		public Assignment getValueAssignment_1_1() { return cValueAssignment_1_1; }
+		
+		//ID
+		public RuleCall getValueIDTerminalRuleCall_1_1_0() { return cValueIDTerminalRuleCall_1_1_0; }
+		
+		//'(' Exp ')'
+		public Group getGroup_2() { return cGroup_2; }
+		
 		//'('
-		public Keyword getLeftParenthesisKeyword_1_0() { return cLeftParenthesisKeyword_1_0; }
+		public Keyword getLeftParenthesisKeyword_2_0() { return cLeftParenthesisKeyword_2_0; }
 		
 		//Exp
-		public RuleCall getExpParserRuleCall_1_1() { return cExpParserRuleCall_1_1; }
+		public RuleCall getExpParserRuleCall_2_1() { return cExpParserRuleCall_2_1; }
 		
 		//')'
-		public Keyword getRightParenthesisKeyword_1_2() { return cRightParenthesisKeyword_1_2; }
+		public Keyword getRightParenthesisKeyword_2_2() { return cRightParenthesisKeyword_2_2; }
 	}
 	
 	
 	private final MathExpElements pMathExp;
 	private final ExpElements pExp;
 	private final VarElements pVar;
+	private final LetElements pLet;
 	private final PlusMinusElements pPlusMinus;
 	private final TermElements pTerm;
 	private final PrimaryElements pPrimary;
@@ -347,6 +459,7 @@ public class MathGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		this.pMathExp = new MathExpElements();
 		this.pExp = new ExpElements();
 		this.pVar = new VarElements();
+		this.pLet = new LetElements();
 		this.pPlusMinus = new PlusMinusElements();
 		this.pTerm = new TermElements();
 		this.pPrimary = new PrimaryElements();
@@ -398,10 +511,9 @@ public class MathGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	}
 	
 	//Var returns Exp:
-	//    PlusMinus (
-	//        ({Var.left=current} 'var ' name=ID ' = ' right=Var) |
-	//        ({Let.left=current} 'let ' name=ID '='  right=PlusMinus)
-	//        )
+	//    Let (
+	//        ({Var.left=current} 'var ' name=ID ' = ' right=Let)
+	//    )*
 	//;
 	public VarElements getVarAccess() {
 		return pVar;
@@ -409,6 +521,21 @@ public class MathGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	
 	public ParserRule getVarRule() {
 		return getVarAccess().getRule();
+	}
+	
+	//Let returns Exp:
+	//    PlusMinus (
+	//        ({Let.left=current} ('let ' | ' let ') name=ID (' = ' | '=')  right=PlusMinus) |
+	//        ({In.left=current} ' in ' right=PlusMinus) |
+	//        ({End.left=current} ('end' | ' end ') right=PlusMinus)
+	//    )*
+	//;
+	public LetElements getLetAccess() {
+		return pLet;
+	}
+	
+	public ParserRule getLetRule() {
+		return getLetAccess().getRule();
 	}
 	
 	//PlusMinus returns Exp:
@@ -441,7 +568,11 @@ public class MathGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		return getTermAccess().getRule();
 	}
 	
-	//Primary returns Exp: {MyNumber} value=INT | '(' Exp ')';
+	//Primary returns Exp:
+	//    {MyNumber} value=INT |
+	//    {MyString} value=ID |
+	//    '(' Exp ')'
+	//;
 	public PrimaryElements getPrimaryAccess() {
 		return pPrimary;
 	}

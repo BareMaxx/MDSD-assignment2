@@ -19,6 +19,9 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import dk.sdu.mmmi.mdsd.math.Var
 import dk.sdu.mmmi.mdsd.math.Let
+import dk.sdu.mmmi.mdsd.math.In
+import dk.sdu.mmmi.mdsd.math.MyString
+import dk.sdu.mmmi.mdsd.math.End
 
 /**
  * Generates code from your model files on save.
@@ -28,6 +31,7 @@ import dk.sdu.mmmi.mdsd.math.Let
 class MathGenerator extends AbstractGenerator {
 
 	static Map<String, Integer> variables = new HashMap();
+	static Map<String, Integer> temp = new HashMap();
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val math = resource.allContents.filter(MathExp).next
@@ -43,39 +47,62 @@ class MathGenerator extends AbstractGenerator {
 	//
 	
 	def static compute(MathExp math) { 
-		println("result" + math.exp.computeExp);
+		math.exp.computeExp;
 		println(variables);
 		return variables
 	}
 	
 	def static int computeExp(Exp exp) {
-		println(exp.getClass())
-		var test = 0 as int
 		if (exp instanceof Plus) {
 			return exp.left.computeExp+exp.right.computeExp
 		} else if (exp instanceof Minus) {
 			return exp.left.computeExp-exp.right.computeExp
 		} else if (exp instanceof Mult) {
-			println(exp.left.computeExp);
 			return exp.left.computeExp*exp.right.computeExp
 		} else if (exp instanceof Div) {
 			return exp.left.computeExp/exp.right.computeExp
 		} else if (exp instanceof Var) {
-			println("var" + exp.name)
+			println("Var left " + exp.left)
+			println("Var right " + exp.right)
+			exp.left.computeExp
 			variables.put(exp.name, exp.right.computeExp);
-			test = exp.right.computeExp;
-			println(test)
-			return exp.right.computeExp
+			return 0
 		} else if (exp instanceof Let) {
-			println("LET")
-			return exp.right.computeExp
+			println("Let left " + exp.left)
+			println("Let right " + exp.right)
+			exp.left.computeExp
+			if(variables.containsKey(exp.name)) {
+				temp.put(exp.name, exp.right.computeExp)
+			} else {
+				variables.put(exp.name, exp.right.computeExp);
+			}
+			
+			return 0
+		} else if (exp instanceof In) {
+			println("In left " + exp.left)
+			println("In right " + exp.right)
+			return exp.left.computeExp + exp.right.computeExp
+		} else if (exp instanceof End) {
+			println("End left " + exp.left)
+			println("End right " + exp.right)
+			return exp.left.computeExp	+ exp.right.computeExp
+		}else if (exp instanceof MyNumber) {
+			return exp.value;
+		} else if (exp instanceof MyString) {
+			println("String " + exp.value)
+			var value = 0
+			if(temp.containsKey(exp.value))  {
+				value = temp.get(exp.value)
+				temp.remove(exp.value)
+			} else {
+				value = variables.get(exp.value)
+			}
+			return value;
+		} else {
+			return 0
 		}
 		
-		if (exp instanceof MyNumber) {
-			return exp.value;
-		} else {
-			return 0;
-		}
+		
 	}
 	
 	def static int computePrim(Primary factor) { 

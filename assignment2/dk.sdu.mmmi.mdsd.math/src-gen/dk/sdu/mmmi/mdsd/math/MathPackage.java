@@ -197,6 +197,80 @@ public interface MathPackage extends EPackage
   int LET_FEATURE_COUNT = EXP_FEATURE_COUNT + 3;
 
   /**
+   * The meta object id for the '{@link dk.sdu.mmmi.mdsd.math.impl.InImpl <em>In</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see dk.sdu.mmmi.mdsd.math.impl.InImpl
+   * @see dk.sdu.mmmi.mdsd.math.impl.MathPackageImpl#getIn()
+   * @generated
+   */
+  int IN = 4;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IN__LEFT = EXP_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IN__RIGHT = EXP_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>In</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IN_FEATURE_COUNT = EXP_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link dk.sdu.mmmi.mdsd.math.impl.EndImpl <em>End</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see dk.sdu.mmmi.mdsd.math.impl.EndImpl
+   * @see dk.sdu.mmmi.mdsd.math.impl.MathPackageImpl#getEnd()
+   * @generated
+   */
+  int END = 5;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int END__LEFT = EXP_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int END__RIGHT = EXP_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>End</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int END_FEATURE_COUNT = EXP_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link dk.sdu.mmmi.mdsd.math.impl.PlusImpl <em>Plus</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -204,7 +278,7 @@ public interface MathPackage extends EPackage
    * @see dk.sdu.mmmi.mdsd.math.impl.MathPackageImpl#getPlus()
    * @generated
    */
-  int PLUS = 4;
+  int PLUS = 6;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -241,7 +315,7 @@ public interface MathPackage extends EPackage
    * @see dk.sdu.mmmi.mdsd.math.impl.MathPackageImpl#getMinus()
    * @generated
    */
-  int MINUS = 5;
+  int MINUS = 7;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -278,7 +352,7 @@ public interface MathPackage extends EPackage
    * @see dk.sdu.mmmi.mdsd.math.impl.MathPackageImpl#getMult()
    * @generated
    */
-  int MULT = 6;
+  int MULT = 8;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -315,7 +389,7 @@ public interface MathPackage extends EPackage
    * @see dk.sdu.mmmi.mdsd.math.impl.MathPackageImpl#getDiv()
    * @generated
    */
-  int DIV = 7;
+  int DIV = 9;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -352,7 +426,7 @@ public interface MathPackage extends EPackage
    * @see dk.sdu.mmmi.mdsd.math.impl.MathPackageImpl#getMyNumber()
    * @generated
    */
-  int MY_NUMBER = 8;
+  int MY_NUMBER = 10;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -371,6 +445,34 @@ public interface MathPackage extends EPackage
    * @ordered
    */
   int MY_NUMBER_FEATURE_COUNT = EXP_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link dk.sdu.mmmi.mdsd.math.impl.MyStringImpl <em>My String</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see dk.sdu.mmmi.mdsd.math.impl.MyStringImpl
+   * @see dk.sdu.mmmi.mdsd.math.impl.MathPackageImpl#getMyString()
+   * @generated
+   */
+  int MY_STRING = 11;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MY_STRING__VALUE = EXP_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>My String</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MY_STRING_FEATURE_COUNT = EXP_FEATURE_COUNT + 1;
 
 
   /**
@@ -489,6 +591,70 @@ public interface MathPackage extends EPackage
    * @generated
    */
   EReference getLet_Right();
+
+  /**
+   * Returns the meta object for class '{@link dk.sdu.mmmi.mdsd.math.In <em>In</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>In</em>'.
+   * @see dk.sdu.mmmi.mdsd.math.In
+   * @generated
+   */
+  EClass getIn();
+
+  /**
+   * Returns the meta object for the containment reference '{@link dk.sdu.mmmi.mdsd.math.In#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see dk.sdu.mmmi.mdsd.math.In#getLeft()
+   * @see #getIn()
+   * @generated
+   */
+  EReference getIn_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link dk.sdu.mmmi.mdsd.math.In#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see dk.sdu.mmmi.mdsd.math.In#getRight()
+   * @see #getIn()
+   * @generated
+   */
+  EReference getIn_Right();
+
+  /**
+   * Returns the meta object for class '{@link dk.sdu.mmmi.mdsd.math.End <em>End</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>End</em>'.
+   * @see dk.sdu.mmmi.mdsd.math.End
+   * @generated
+   */
+  EClass getEnd();
+
+  /**
+   * Returns the meta object for the containment reference '{@link dk.sdu.mmmi.mdsd.math.End#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see dk.sdu.mmmi.mdsd.math.End#getLeft()
+   * @see #getEnd()
+   * @generated
+   */
+  EReference getEnd_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link dk.sdu.mmmi.mdsd.math.End#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see dk.sdu.mmmi.mdsd.math.End#getRight()
+   * @see #getEnd()
+   * @generated
+   */
+  EReference getEnd_Right();
 
   /**
    * Returns the meta object for class '{@link dk.sdu.mmmi.mdsd.math.Plus <em>Plus</em>}'.
@@ -640,6 +806,27 @@ public interface MathPackage extends EPackage
   EAttribute getMyNumber_Value();
 
   /**
+   * Returns the meta object for class '{@link dk.sdu.mmmi.mdsd.math.MyString <em>My String</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>My String</em>'.
+   * @see dk.sdu.mmmi.mdsd.math.MyString
+   * @generated
+   */
+  EClass getMyString();
+
+  /**
+   * Returns the meta object for the attribute '{@link dk.sdu.mmmi.mdsd.math.MyString#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see dk.sdu.mmmi.mdsd.math.MyString#getValue()
+   * @see #getMyString()
+   * @generated
+   */
+  EAttribute getMyString_Value();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -757,6 +944,58 @@ public interface MathPackage extends EPackage
      * @generated
      */
     EReference LET__RIGHT = eINSTANCE.getLet_Right();
+
+    /**
+     * The meta object literal for the '{@link dk.sdu.mmmi.mdsd.math.impl.InImpl <em>In</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see dk.sdu.mmmi.mdsd.math.impl.InImpl
+     * @see dk.sdu.mmmi.mdsd.math.impl.MathPackageImpl#getIn()
+     * @generated
+     */
+    EClass IN = eINSTANCE.getIn();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IN__LEFT = eINSTANCE.getIn_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference IN__RIGHT = eINSTANCE.getIn_Right();
+
+    /**
+     * The meta object literal for the '{@link dk.sdu.mmmi.mdsd.math.impl.EndImpl <em>End</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see dk.sdu.mmmi.mdsd.math.impl.EndImpl
+     * @see dk.sdu.mmmi.mdsd.math.impl.MathPackageImpl#getEnd()
+     * @generated
+     */
+    EClass END = eINSTANCE.getEnd();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference END__LEFT = eINSTANCE.getEnd_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference END__RIGHT = eINSTANCE.getEnd_Right();
 
     /**
      * The meta object literal for the '{@link dk.sdu.mmmi.mdsd.math.impl.PlusImpl <em>Plus</em>}' class.
@@ -879,6 +1118,24 @@ public interface MathPackage extends EPackage
      * @generated
      */
     EAttribute MY_NUMBER__VALUE = eINSTANCE.getMyNumber_Value();
+
+    /**
+     * The meta object literal for the '{@link dk.sdu.mmmi.mdsd.math.impl.MyStringImpl <em>My String</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see dk.sdu.mmmi.mdsd.math.impl.MyStringImpl
+     * @see dk.sdu.mmmi.mdsd.math.impl.MathPackageImpl#getMyString()
+     * @generated
+     */
+    EClass MY_STRING = eINSTANCE.getMyString();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MY_STRING__VALUE = eINSTANCE.getMyString_Value();
 
   }
 

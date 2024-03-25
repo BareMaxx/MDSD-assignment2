@@ -20,6 +20,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Math.ecore#//Let/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Math.ecore#//Let/right"/>
     </genClasses>
+    <genClasses ecoreClass="Math.ecore#//In">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Math.ecore#//In/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Math.ecore#//In/right"/>
+    </genClasses>
+    <genClasses ecoreClass="Math.ecore#//End">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Math.ecore#//End/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Math.ecore#//End/right"/>
+    </genClasses>
     <genClasses ecoreClass="Math.ecore#//Plus">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Math.ecore#//Plus/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Math.ecore#//Plus/right"/>
@@ -38,6 +46,9 @@
     </genClasses>
     <genClasses ecoreClass="Math.ecore#//MyNumber">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Math.ecore#//MyNumber/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Math.ecore#//MyString">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Math.ecore#//MyString/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

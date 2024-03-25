@@ -5,11 +5,17 @@ generate math "http://www.sdu.dk/mmmi/mdsd/Math"
 
 MathExp: exp=Exp;
 Exp: Var;
-Var returns Exp:
+Var returns Exp: 
+	Let (
+		({Var.left=current} 'var ' name=ID ' = ' right=Let)
+	)*
+;
+Let returns Exp:
 	PlusMinus (
-		({Var.left=current} 'var ' name=ID ' = ' right=Var) | 
-		({Let.left=current} 'let ' name=ID '='  right=PlusMinus)
-		)
+		({Let.left=current} ('let ' | ' let ') name=ID (' = ' | '=')  right=PlusMinus) |
+		({In.left=current} ' in ' right=PlusMinus) | 
+		({End.left=current} ('end' | ' end ') right=PlusMinus)
+	)*
 ;
 PlusMinus returns Exp: 
 	Term (
@@ -26,7 +32,11 @@ Term returns Exp:
 	)*
 ;
 
-Primary returns Exp: {MyNumber} value=INT | '(' Exp ')';
+Primary returns Exp: 
+	{MyNumber} value=INT | 
+	{MyString} value=ID | 
+	'(' Exp ')'
+;
 
 
 /*ExpressionsModel:

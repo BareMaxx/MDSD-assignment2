@@ -103,6 +103,22 @@ public class MathSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case MathPackage.IN:
+      {
+        In in = (In)theEObject;
+        T result = caseIn(in);
+        if (result == null) result = caseExp(in);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MathPackage.END:
+      {
+        End end = (End)theEObject;
+        T result = caseEnd(end);
+        if (result == null) result = caseExp(end);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case MathPackage.PLUS:
       {
         Plus plus = (Plus)theEObject;
@@ -140,6 +156,14 @@ public class MathSwitch<T> extends Switch<T>
         MyNumber myNumber = (MyNumber)theEObject;
         T result = caseMyNumber(myNumber);
         if (result == null) result = caseExp(myNumber);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case MathPackage.MY_STRING:
+      {
+        MyString myString = (MyString)theEObject;
+        T result = caseMyString(myString);
+        if (result == null) result = caseExp(myString);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -207,6 +231,38 @@ public class MathSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseLet(Let object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>In</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>In</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIn(In object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>End</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>End</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEnd(End object)
   {
     return null;
   }
@@ -287,6 +343,22 @@ public class MathSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseMyNumber(MyNumber object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>My String</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>My String</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMyString(MyString object)
   {
     return null;
   }

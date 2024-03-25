@@ -60,6 +60,24 @@ public interface MathFactory extends EFactory
   Let createLet();
 
   /**
+   * Returns a new object of class '<em>In</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>In</em>'.
+   * @generated
+   */
+  In createIn();
+
+  /**
+   * Returns a new object of class '<em>End</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>End</em>'.
+   * @generated
+   */
+  End createEnd();
+
+  /**
    * Returns a new object of class '<em>Plus</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -103,6 +121,15 @@ public interface MathFactory extends EFactory
    * @generated
    */
   MyNumber createMyNumber();
+
+  /**
+   * Returns a new object of class '<em>My String</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>My String</em>'.
+   * @generated
+   */
+  MyString createMyString();
 
   /**
    * Returns the package supported by this factory.
