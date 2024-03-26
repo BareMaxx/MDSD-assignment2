@@ -31,7 +31,6 @@ import dk.sdu.mmmi.mdsd.math.End
 class MathGenerator extends AbstractGenerator {
 
 	static Map<String, Integer> variables = new HashMap();
-	static Map<String, Integer> temp = new HashMap();
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val math = resource.allContents.filter(MathExp).next
@@ -71,11 +70,7 @@ class MathGenerator extends AbstractGenerator {
 			println("Let left " + exp.left)
 			println("Let right " + exp.right)
 			exp.left.computeExp
-			if(variables.containsKey(exp.name)) {
-				temp.put(exp.name, exp.right.computeExp)
-			} else {
-				variables.put(exp.name, exp.right.computeExp);
-			}
+			variables.put(exp.name, exp.right.computeExp);
 			
 			return 0
 		} else if (exp instanceof In) {
@@ -91,12 +86,7 @@ class MathGenerator extends AbstractGenerator {
 		} else if (exp instanceof MyString) {
 			println("String " + exp.value)
 			var value = 0
-			if(temp.containsKey(exp.value))  {
-				value = temp.get(exp.value)
-				temp.remove(exp.value)
-			} else {
-				value = variables.get(exp.value)
-			}
+			value = variables.get(exp.value)
 			return value;
 		} else {
 			return 0
