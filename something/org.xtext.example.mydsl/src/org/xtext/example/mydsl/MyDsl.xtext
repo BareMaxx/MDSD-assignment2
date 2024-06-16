@@ -1,0 +1,8 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+
+Container: "container" contains = ABC;
+ABC: ({BCD} 'BCD' | {CDE} 'CDE') name = ID;
+

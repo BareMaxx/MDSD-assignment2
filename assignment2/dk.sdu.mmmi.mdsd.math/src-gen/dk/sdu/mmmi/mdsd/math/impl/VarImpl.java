@@ -23,54 +23,22 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.VarImpl#getLeft <em>Left</em>}</li>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.VarImpl#getName <em>Name</em>}</li>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.VarImpl#getRight <em>Right</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.VarImpl#getExpression <em>Expression</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class VarImpl extends ExpImpl implements Var
+public class VarImpl extends BindingImpl implements Var
 {
   /**
-   * The cached value of the '{@link #getLeft() <em>Left</em>}' containment reference.
+   * The cached value of the '{@link #getExpression() <em>Expression</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getLeft()
+   * @see #getExpression()
    * @generated
    * @ordered
    */
-  protected Exp left;
-
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getRight() <em>Right</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRight()
-   * @generated
-   * @ordered
-   */
-  protected Exp right;
+  protected Exp expression;
 
   /**
    * <!-- begin-user-doc -->
@@ -99,9 +67,9 @@ public class VarImpl extends ExpImpl implements Var
    * @generated
    */
   @Override
-  public Exp getLeft()
+  public Exp getExpression()
   {
-    return left;
+    return expression;
   }
 
   /**
@@ -109,13 +77,13 @@ public class VarImpl extends ExpImpl implements Var
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetLeft(Exp newLeft, NotificationChain msgs)
+  public NotificationChain basicSetExpression(Exp newExpression, NotificationChain msgs)
   {
-    Exp oldLeft = left;
-    left = newLeft;
+    Exp oldExpression = expression;
+    expression = newExpression;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MathPackage.VAR__LEFT, oldLeft, newLeft);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MathPackage.VAR__EXPRESSION, oldExpression, newExpression);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -127,95 +95,20 @@ public class VarImpl extends ExpImpl implements Var
    * @generated
    */
   @Override
-  public void setLeft(Exp newLeft)
+  public void setExpression(Exp newExpression)
   {
-    if (newLeft != left)
+    if (newExpression != expression)
     {
       NotificationChain msgs = null;
-      if (left != null)
-        msgs = ((InternalEObject)left).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MathPackage.VAR__LEFT, null, msgs);
-      if (newLeft != null)
-        msgs = ((InternalEObject)newLeft).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MathPackage.VAR__LEFT, null, msgs);
-      msgs = basicSetLeft(newLeft, msgs);
+      if (expression != null)
+        msgs = ((InternalEObject)expression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MathPackage.VAR__EXPRESSION, null, msgs);
+      if (newExpression != null)
+        msgs = ((InternalEObject)newExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MathPackage.VAR__EXPRESSION, null, msgs);
+      msgs = basicSetExpression(newExpression, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.VAR__LEFT, newLeft, newLeft));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.VAR__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Exp getRight()
-  {
-    return right;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetRight(Exp newRight, NotificationChain msgs)
-  {
-    Exp oldRight = right;
-    right = newRight;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MathPackage.VAR__RIGHT, oldRight, newRight);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setRight(Exp newRight)
-  {
-    if (newRight != right)
-    {
-      NotificationChain msgs = null;
-      if (right != null)
-        msgs = ((InternalEObject)right).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MathPackage.VAR__RIGHT, null, msgs);
-      if (newRight != null)
-        msgs = ((InternalEObject)newRight).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MathPackage.VAR__RIGHT, null, msgs);
-      msgs = basicSetRight(newRight, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.VAR__RIGHT, newRight, newRight));
+      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.VAR__EXPRESSION, newExpression, newExpression));
   }
 
   /**
@@ -228,10 +121,8 @@ public class VarImpl extends ExpImpl implements Var
   {
     switch (featureID)
     {
-      case MathPackage.VAR__LEFT:
-        return basicSetLeft(null, msgs);
-      case MathPackage.VAR__RIGHT:
-        return basicSetRight(null, msgs);
+      case MathPackage.VAR__EXPRESSION:
+        return basicSetExpression(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -246,12 +137,8 @@ public class VarImpl extends ExpImpl implements Var
   {
     switch (featureID)
     {
-      case MathPackage.VAR__LEFT:
-        return getLeft();
-      case MathPackage.VAR__NAME:
-        return getName();
-      case MathPackage.VAR__RIGHT:
-        return getRight();
+      case MathPackage.VAR__EXPRESSION:
+        return getExpression();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -266,14 +153,8 @@ public class VarImpl extends ExpImpl implements Var
   {
     switch (featureID)
     {
-      case MathPackage.VAR__LEFT:
-        setLeft((Exp)newValue);
-        return;
-      case MathPackage.VAR__NAME:
-        setName((String)newValue);
-        return;
-      case MathPackage.VAR__RIGHT:
-        setRight((Exp)newValue);
+      case MathPackage.VAR__EXPRESSION:
+        setExpression((Exp)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -289,14 +170,8 @@ public class VarImpl extends ExpImpl implements Var
   {
     switch (featureID)
     {
-      case MathPackage.VAR__LEFT:
-        setLeft((Exp)null);
-        return;
-      case MathPackage.VAR__NAME:
-        setName(NAME_EDEFAULT);
-        return;
-      case MathPackage.VAR__RIGHT:
-        setRight((Exp)null);
+      case MathPackage.VAR__EXPRESSION:
+        setExpression((Exp)null);
         return;
     }
     super.eUnset(featureID);
@@ -312,31 +187,10 @@ public class VarImpl extends ExpImpl implements Var
   {
     switch (featureID)
     {
-      case MathPackage.VAR__LEFT:
-        return left != null;
-      case MathPackage.VAR__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case MathPackage.VAR__RIGHT:
-        return right != null;
+      case MathPackage.VAR__EXPRESSION:
+        return expression != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //VarImpl

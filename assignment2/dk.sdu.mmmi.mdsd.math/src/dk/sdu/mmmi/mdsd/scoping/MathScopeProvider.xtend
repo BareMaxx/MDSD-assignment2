@@ -3,6 +3,13 @@
  */
 package dk.sdu.mmmi.mdsd.scoping
 
+import dk.sdu.mmmi.mdsd.math.Let
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.EReference
+import org.eclipse.xtext.scoping.IScope
+import org.eclipse.xtext.scoping.Scopes
+import dk.sdu.mmmi.mdsd.math.VariableUse
+import dk.sdu.mmmi.mdsd.math.Program
 
 /**
  * This class contains custom scoping description.
@@ -12,4 +19,29 @@ package dk.sdu.mmmi.mdsd.scoping
  */
 class MathScopeProvider extends AbstractMathScopeProvider {
 
+	override getScope(EObject context, EReference reference) {
+		return context.scopeForEObject(reference)
+	}
+	
+	def dispatch scopeForEObject(EObject context, EReference reference) {
+		return super.getScope(context, reference)
+	}
+	
+	def dispatch scopeForEObject(VariableUse varUse, EReference reference) {
+		varUse.scopeForVarUse
+	}
+	
+	def IScope scopeForVarUse(EObject context) {
+		val container = context.eContainer
+		switch container {
+			Let: {
+				if(container.binding == context)
+					container.scopeForVarUse
+				else
+					Scopes.scopeFor(#[container], container.scopeForVarUse)
+			}
+			Program: Scopes.scopeFor(container.exp.filter[it != context])
+			default: container.scopeForVarUse
+		}
+	}
 }

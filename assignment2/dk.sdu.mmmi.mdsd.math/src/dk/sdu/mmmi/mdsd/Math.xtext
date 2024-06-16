@@ -3,20 +3,24 @@ grammar dk.sdu.mmmi.mdsd.Math with org.eclipse.xtext.common.Terminals
 generate math "http://www.sdu.dk/mmmi/mdsd/Math"
 
 
-MathExp: exp=Exp;
-Exp: Var;
-Var returns Exp: 
-	Let (
-		({Var.left=current} 'var ' name=ID ' = ' right=Let)
-	)*
+Program: 'program' name=ID externals+=External* exp += Var*;
+
+Var:
+	'var' name=ID '=' expression=PlusMinus
 ;
-Let returns Exp:
-	PlusMinus (
-		({Let.left=current} ('let ' | ' let ') name=ID (' = ' | '=')  right=PlusMinus) |
-		({In.left=current} ' in ' right=PlusMinus) | 
-		({End.left=current} ('end' | ' end ') right=PlusMinus)
-	)*
+
+External:
+	'external' name=ID '(' (params+=Cool (',' params+=Cool)*)?')'
 ;
+
+Cool:
+	("int")
+;
+
+Let:
+	'let' name=ID '=' binding=PlusMinus 'in' body=PlusMinus 'end'
+;
+
 PlusMinus returns Exp: 
 	Term (
 		({Plus.left=current} '+' right=Term |
@@ -24,6 +28,7 @@ PlusMinus returns Exp:
 		)
 	)*
 ;
+
 Term returns Exp: 
 	Primary (
 		({Mult.left=current} '*' right=Primary |
@@ -32,12 +37,29 @@ Term returns Exp:
 	)*
 ;
 
-Primary returns Exp: 
-	{MyNumber} value=INT | 
-	{MyString} value=ID | 
-	'(' Exp ')'
+Binding: 
+	Var | Let
 ;
 
+VariableUse:
+	ref = [Binding]
+;
+
+Parenthesies returns Exp:
+	{Par}'(' body=PlusMinus ')'
+;
+
+Func: 
+	name=ID '(' (args+=PlusMinus (',' args+=PlusMinus)*)?')'
+;
+
+Primary returns Exp: 
+	{MyNumber} value=INT | 
+    Parenthesies |
+	VariableUse |
+	Let |
+	Func
+;
 
 /*ExpressionsModel:
 	elements +=AbstractElement*

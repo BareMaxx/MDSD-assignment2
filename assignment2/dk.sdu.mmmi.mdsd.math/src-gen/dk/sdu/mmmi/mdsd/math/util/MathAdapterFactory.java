@@ -76,14 +76,9 @@ public class MathAdapterFactory extends AdapterFactoryImpl
     new MathSwitch<Adapter>()
     {
       @Override
-      public Adapter caseMathExp(MathExp object)
+      public Adapter caseProgram(Program object)
       {
-        return createMathExpAdapter();
-      }
-      @Override
-      public Adapter caseExp(Exp object)
-      {
-        return createExpAdapter();
+        return createProgramAdapter();
       }
       @Override
       public Adapter caseVar(Var object)
@@ -91,19 +86,34 @@ public class MathAdapterFactory extends AdapterFactoryImpl
         return createVarAdapter();
       }
       @Override
+      public Adapter caseExternal(External object)
+      {
+        return createExternalAdapter();
+      }
+      @Override
       public Adapter caseLet(Let object)
       {
         return createLetAdapter();
       }
       @Override
-      public Adapter caseIn(In object)
+      public Adapter caseExp(Exp object)
       {
-        return createInAdapter();
+        return createExpAdapter();
       }
       @Override
-      public Adapter caseEnd(End object)
+      public Adapter caseBinding(Binding object)
       {
-        return createEndAdapter();
+        return createBindingAdapter();
+      }
+      @Override
+      public Adapter caseVariableUse(VariableUse object)
+      {
+        return createVariableUseAdapter();
+      }
+      @Override
+      public Adapter caseFunc(Func object)
+      {
+        return createFuncAdapter();
       }
       @Override
       public Adapter casePlus(Plus object)
@@ -126,14 +136,14 @@ public class MathAdapterFactory extends AdapterFactoryImpl
         return createDivAdapter();
       }
       @Override
+      public Adapter casePar(Par object)
+      {
+        return createParAdapter();
+      }
+      @Override
       public Adapter caseMyNumber(MyNumber object)
       {
         return createMyNumberAdapter();
-      }
-      @Override
-      public Adapter caseMyString(MyString object)
-      {
-        return createMyStringAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -158,31 +168,16 @@ public class MathAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.MathExp <em>Exp</em>}'.
+   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.Program <em>Program</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see dk.sdu.mmmi.mdsd.math.MathExp
+   * @see dk.sdu.mmmi.mdsd.math.Program
    * @generated
    */
-  public Adapter createMathExpAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.Exp <em>Exp</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see dk.sdu.mmmi.mdsd.math.Exp
-   * @generated
-   */
-  public Adapter createExpAdapter()
+  public Adapter createProgramAdapter()
   {
     return null;
   }
@@ -203,6 +198,21 @@ public class MathAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.External <em>External</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see dk.sdu.mmmi.mdsd.math.External
+   * @generated
+   */
+  public Adapter createExternalAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.Let <em>Let</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -218,31 +228,61 @@ public class MathAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.In <em>In</em>}'.
+   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.Exp <em>Exp</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see dk.sdu.mmmi.mdsd.math.In
+   * @see dk.sdu.mmmi.mdsd.math.Exp
    * @generated
    */
-  public Adapter createInAdapter()
+  public Adapter createExpAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.End <em>End</em>}'.
+   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.Binding <em>Binding</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see dk.sdu.mmmi.mdsd.math.End
+   * @see dk.sdu.mmmi.mdsd.math.Binding
    * @generated
    */
-  public Adapter createEndAdapter()
+  public Adapter createBindingAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.VariableUse <em>Variable Use</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see dk.sdu.mmmi.mdsd.math.VariableUse
+   * @generated
+   */
+  public Adapter createVariableUseAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.Func <em>Func</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see dk.sdu.mmmi.mdsd.math.Func
+   * @generated
+   */
+  public Adapter createFuncAdapter()
   {
     return null;
   }
@@ -308,6 +348,21 @@ public class MathAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.Par <em>Par</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see dk.sdu.mmmi.mdsd.math.Par
+   * @generated
+   */
+  public Adapter createParAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.MyNumber <em>My Number</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -318,21 +373,6 @@ public class MathAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMyNumberAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link dk.sdu.mmmi.mdsd.math.MyString <em>My String</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see dk.sdu.mmmi.mdsd.math.MyString
-   * @generated
-   */
-  public Adapter createMyStringAdapter()
   {
     return null;
   }

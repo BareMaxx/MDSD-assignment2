@@ -13,81 +13,58 @@ package dk.sdu.mmmi.mdsd.math;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.Let#getLeft <em>Left</em>}</li>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.Let#getName <em>Name</em>}</li>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.Let#getRight <em>Right</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.Let#getBinding <em>Binding</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.Let#getBody <em>Body</em>}</li>
  * </ul>
  *
  * @see dk.sdu.mmmi.mdsd.math.MathPackage#getLet()
  * @model
  * @generated
  */
-public interface Let extends Exp
+public interface Let extends Binding, Exp
 {
   /**
-   * Returns the value of the '<em><b>Left</b></em>' containment reference.
+   * Returns the value of the '<em><b>Binding</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Left</em>' containment reference.
-   * @see #setLeft(Exp)
-   * @see dk.sdu.mmmi.mdsd.math.MathPackage#getLet_Left()
+   * @return the value of the '<em>Binding</em>' containment reference.
+   * @see #setBinding(Exp)
+   * @see dk.sdu.mmmi.mdsd.math.MathPackage#getLet_Binding()
    * @model containment="true"
    * @generated
    */
-  Exp getLeft();
+  Exp getBinding();
 
   /**
-   * Sets the value of the '{@link dk.sdu.mmmi.mdsd.math.Let#getLeft <em>Left</em>}' containment reference.
+   * Sets the value of the '{@link dk.sdu.mmmi.mdsd.math.Let#getBinding <em>Binding</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Left</em>' containment reference.
-   * @see #getLeft()
+   * @param value the new value of the '<em>Binding</em>' containment reference.
+   * @see #getBinding()
    * @generated
    */
-  void setLeft(Exp value);
+  void setBinding(Exp value);
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Body</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see dk.sdu.mmmi.mdsd.math.MathPackage#getLet_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link dk.sdu.mmmi.mdsd.math.Let#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Right</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Right</em>' containment reference.
-   * @see #setRight(Exp)
-   * @see dk.sdu.mmmi.mdsd.math.MathPackage#getLet_Right()
+   * @return the value of the '<em>Body</em>' containment reference.
+   * @see #setBody(Exp)
+   * @see dk.sdu.mmmi.mdsd.math.MathPackage#getLet_Body()
    * @model containment="true"
    * @generated
    */
-  Exp getRight();
+  Exp getBody();
 
   /**
-   * Sets the value of the '{@link dk.sdu.mmmi.mdsd.math.Let#getRight <em>Right</em>}' containment reference.
+   * Sets the value of the '{@link dk.sdu.mmmi.mdsd.math.Let#getBody <em>Body</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Right</em>' containment reference.
-   * @see #getRight()
+   * @param value the new value of the '<em>Body</em>' containment reference.
+   * @see #getBody()
    * @generated
    */
-  void setRight(Exp value);
+  void setBody(Exp value);
 
 } // Let

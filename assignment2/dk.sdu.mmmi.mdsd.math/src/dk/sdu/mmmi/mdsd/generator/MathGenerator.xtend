@@ -5,7 +5,7 @@ package dk.sdu.mmmi.mdsd.generator
 
 import dk.sdu.mmmi.mdsd.math.Div
 import dk.sdu.mmmi.mdsd.math.Exp
-import dk.sdu.mmmi.mdsd.math.MathExp
+import dk.sdu.mmmi.mdsd.math.Program
 import dk.sdu.mmmi.mdsd.math.Minus
 import dk.sdu.mmmi.mdsd.math.Mult
 import dk.sdu.mmmi.mdsd.math.Plus
@@ -19,9 +19,11 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import dk.sdu.mmmi.mdsd.math.Var
 import dk.sdu.mmmi.mdsd.math.Let
-import dk.sdu.mmmi.mdsd.math.In
-import dk.sdu.mmmi.mdsd.math.MyString
-import dk.sdu.mmmi.mdsd.math.End
+import dk.sdu.mmmi.mdsd.math.VariableUse
+import dk.sdu.mmmi.mdsd.math.Par
+import dk.sdu.mmmi.mdsd.math.External
+import dk.sdu.mmmi.mdsd.math.Func
+import java.util.List
 
 /**
  * Generates code from your model files on save.
@@ -30,81 +32,109 @@ import dk.sdu.mmmi.mdsd.math.End
  */
 class MathGenerator extends AbstractGenerator {
 
-	static Map<String, Integer> variables = new HashMap();
+	static Map<String, Object> variables = new HashMap();
+	static List<String> paramNames = newArrayList("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z")
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		val math = resource.allContents.filter(MathExp).next
-		val result = math.compute
-		
-		// You can replace with hovering, see Bettini Chapter 8
-		result.displayPanel
-	}
-	
-	//
-	// Compute function: computes value of expression
-	// Note: written according to illegal left-recursive grammar, requires fix
-	//
-	
-	def static compute(MathExp math) { 
-		math.exp.computeExp;
-		println(variables);
-		return variables
-	}
-	
-	def static int computeExp(Exp exp) {
-		if (exp instanceof Plus) {
-			return exp.left.computeExp+exp.right.computeExp
-		} else if (exp instanceof Minus) {
-			return exp.left.computeExp-exp.right.computeExp
-		} else if (exp instanceof Mult) {
-			return exp.left.computeExp*exp.right.computeExp
-		} else if (exp instanceof Div) {
-			return exp.left.computeExp/exp.right.computeExp
-		} else if (exp instanceof Var) {
-			println("Var left " + exp.left)
-			println("Var right " + exp.right)
-			exp.left.computeExp
-			variables.put(exp.name, exp.right.computeExp);
-			return 0
-		} else if (exp instanceof Let) {
-			println("Let left " + exp.left)
-			println("Let right " + exp.right)
-			exp.left.computeExp
-			variables.put(exp.name, exp.right.computeExp);
+		for (program : resource.allContents.toIterable.filter(Program)) {
 			
-			return 0
-		} else if (exp instanceof In) {
-			println("In left " + exp.left)
-			println("In right " + exp.right)
-			return exp.left.computeExp + exp.right.computeExp
-		} else if (exp instanceof End) {
-			println("End left " + exp.left)
-			println("End right " + exp.right)
-			return exp.left.computeExp	+ exp.right.computeExp
-		}else if (exp instanceof MyNumber) {
-			return exp.value;
-		} else if (exp instanceof MyString) {
-			println("String " + exp.value)
-			var value = 0
-			value = variables.get(exp.value)
-			return value;
-		} else {
-			return 0
+			fsa.generateFile("math_expression/" + program.name + ".java", program.compile)
 		}
-		
-		
 	}
 	
-	def static int computePrim(Primary factor) { 
-		87
+	def compile(Program program) {
+		variables.clear()
+		'''
+			package math_expression;
+			public class «program.name» {
+				«FOR variable : program.exp»
+				public int «variable.name»;
+				«ENDFOR»
+				
+				«IF !program.externals.isEmpty()»
+				private External external;
+				
+				public «program.name»(External external) {
+					this.external = external;
+				}
+				«ENDIF»
+				
+				public void compute() {
+					«FOR variable: program.exp»
+					«IF variable.getClass() != Let»
+					«variable.name» = «variable.expression.computeExpression»;
+					«ENDIF»
+					«ENDFOR»	
+				}
+				
+				«IF !program.externals.isEmpty()»
+				public interface External {
+					«FOR external: program.externals»
+					public int «external.name»(«FOR param : external.params.indexed»«param.value» «paramNames.get(param.key)»«IF param.value !== external.params.last»,«ENDIF»«ENDFOR»);
+					«ENDFOR»
+				}	
+				«ENDIF»
+				
+			}
+		'''
+	}
+	
+	def static dispatch computeExpression(Func function) {
+		return '''external.«function.name»(«FOR param : function.args»«param.computeExpression»«IF param !== function.args.last»,«ENDIF»«ENDFOR»)'''
+	}
+	
+	def static dispatch computeExpression(MyNumber exp) {
+		return 
+		'''«exp.value»'''
+	}
+	
+	def static dispatch computeExpression(Plus exp) {
+		return 
+		'''(«exp.left.computeExpression» + «exp.right.computeExpression»)'''
+	}
+	
+	def static dispatch computeExpression(Minus exp) {
+		return
+		'''(«exp.left.computeExpression» - «exp.right.computeExpression»)'''
+	}
+	
+	def static dispatch computeExpression(Mult exp) {
+		return
+		'''(«exp.left.computeExpression» * «exp.right.computeExpression»)'''
+	}
+	
+	def static dispatch computeExpression(Div exp) {
+		return '''(«exp.left.computeExpression» / «exp.right.computeExpression»)'''
+	}
+	
+	def static dispatch computeExpression(Par exp) {
+		return '''(«exp.body.computeExpression»)'''
+	}
+	
+	
+	def static dispatch computeExpression(Let exp) {
+		exp.body.computeExpression
+	}
+	
+	def static dispatch computeExpression(VariableUse exp) {
+		exp.ref.computeBinding
 	}
 
-	def void displayPanel(Map<String, Integer> result) {
-		var resultString = ""
-		for (entry : result.entrySet()) {
-         	resultString += "var " + entry.getKey() + " = " + entry.getValue() + "\n"
-        }
-		
-		JOptionPane.showMessageDialog(null, resultString ,"Math Language", JOptionPane.INFORMATION_MESSAGE)
+	def static dispatch computeBinding(Var binding){
+		if(!variables.containsKey(binding.name))
+			binding.computeExpression()			
+		variables.get(binding.	name)
 	}
+	
+	def static dispatch computeBinding(Let binding){
+		binding.binding.computeExpression
+	}
+	
+	def static dispatch computeExpression(Var binding) {
+		variables.put(binding.name, binding.expression.computeExpression())
+		return variables.get(binding.name)
+	}
+	
+	
+	
 }
